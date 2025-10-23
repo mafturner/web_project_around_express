@@ -15,7 +15,7 @@ Este proyecto es una API Express.js diseñada para servir información de usuari
 - Uso de `fs` y `path` para manejo de archivos de datos.
 - Linter configurado con `airbnb-base` y `eslint`.
 
-## 🛠 Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - Node.js
 - Express.js
