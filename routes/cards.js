@@ -1,26 +1,20 @@
-// routes/cards.js
-import express from "express";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import express from 'express';
+import {
+  getCards,
+  getCardById,
+  likeCard,
+  dislikeCard,
+  createCard,
+  deleteCard,
+} from '../controllers/cards.js';
 
 const router = express.Router();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const cardsPath = path.join(__dirname, "../data/cards.json");
-
-router.get("/", (req, res) => {
-  fs.readFile(cardsPath, "utf8", (err, data) => {
-    if (err) {
-      console.error("Error al leer cards.json:", err);
-      return res.status(500).json({ message: "Error al leer los datos de tarjetas" });
-    }
-
-    const cards = JSON.parse(data);
-    res.json(cards);
-  });
-});
+router.get('/', getCards);
+router.get('/:cardId', getCardById);
+router.post('/', createCard);
+router.delete('/:cardId', deleteCard);
+router.put('/:cardId/likes', likeCard);
+router.delete('/:cardId/likes', dislikeCard);
 
 export default router;
-
